@@ -1,3 +1,4 @@
+import Contador from "./Contador/Contador";
 import "./Layout.css"
 import Saludo from "./Saludo/Saludo";
 
@@ -10,11 +11,12 @@ const Layout = ( ) => {
 
     return (
         <>
-            <h1 className = "saludo" > Hola Mundo Grupo { grupo }</h1>
+            {/* <h1 className = "saludo" > Hola Mundo Grupo { grupo }</h1> */}
             {/* <h2 style={ h2Style } > Bievenido { nombre } </h2>
             <p>Esto es un parrafo</p> */}
             {/* importacion del componente Saludo */}
-            <Saludo />
+            {/* <Saludo /> */}
+            <Contador value={0}/>
         </>
         
     );

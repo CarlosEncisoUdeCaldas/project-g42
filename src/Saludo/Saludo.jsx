@@ -14,13 +14,13 @@ export default Saludo
 
 //aqui voy a definir el tipo de dato para las props a través de PropTypes
 Saludo.propTypes = {
-    nombre: PropTypes.string.isRequired,
+    nombre: PropTypes.string,
     apellido: PropTypes.string
 }
 
 //tambien tenemos la opcion de crear valores por defecto para las props
 //defaultProps
 Saludo.defaultProps = {
-    
+    nombre: '@sinNombre',
     apellido: '@sinApellido'
 }
