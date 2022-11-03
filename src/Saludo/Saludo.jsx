@@ -21,6 +21,6 @@ Saludo.propTypes = {
 //tambien tenemos la opcion de crear valores por defecto para las props
 //defaultProps
 Saludo.defaultProps = {
-    nombre: '@sinNombre',
-    apellido: '@sinApellido'
+    nombre: 'Carlos',
+    apellido: 'Enciso'
 }
