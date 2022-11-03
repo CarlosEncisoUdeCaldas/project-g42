@@ -1,4 +1,4 @@
-import Home from '../Home'
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -7,19 +7,22 @@ const NavBar = () => {
         <div className="container-fluid">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href= { '/home' }>
+              <Link className="nav-link" to="/home">
+                <i className="bi bi-house"></i>
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/contador">
+              <Link className="nav-link" to="/contador">
+                <i className="bi bi-calculator"></i>
                 Contador
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/saludo">
+              <Link className="nav-link" to="/saludo">
+                <i className="bi bi-hand-thumbs-up"></i>
                 Saludo
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

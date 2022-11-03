@@ -15,10 +15,11 @@ import Saludo from "./Saludo/Saludo";
 //las rutas se insertan dentro de un array, dicho array se enviará al RouterProvider
 const router = createBrowserRouter( 
     createRoutesFromElements([
-        <Route path="/" element={ <Layout/> } />,
-        <Route path="/home" element={ <Home/> } />,
-        <Route path="/contador" element={ <Contador/> } />,
-        <Route path="/saludo" element={ <Saludo/> } />
+        <Route path="/" element={ <Layout/> }>
+            <Route path="/home" element={ <Home/> } />,
+            <Route path="/contador" element={ <Contador/> } />,
+            <Route path="/saludo" element={ <Saludo/> } />
+        </Route>
      ])
 )
 
