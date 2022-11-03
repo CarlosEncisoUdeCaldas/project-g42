@@ -16,7 +16,7 @@ const Layout = ( ) => {
             <p>Esto es un parrafo</p> */}
             {/* importacion del componente Saludo */}
             {/* <Saludo /> */}
-            <Contador value={0}/>
+            <Contador value={ 0 }/>
         </>
         
     );

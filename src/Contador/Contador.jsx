@@ -16,14 +16,23 @@ const Contador = ( { value } ) => {
         // document.getElementById('add').innerHTML = value += 1
         setCount(count + 1)
     }
+
+    const handleResta = () => {
+        setCount(count - 1)
+    }
+
+    const handleReset = () => {
+        setCount(0)
+    }
     //fin de las funciones manejadoras
 
     return(
         <>
             <h1>Contador</h1>
-            <p id= "add" >{ count } { count } Hola</p>
-            <button id="g42" type="button" name="adicionar" onClick={ handleAdicionar }>+ 1</button>
-            <p> { count } </p>
+            <p id= "add" >{ count }</p>
+            <button className="btn btn-success" type="button" name="adicionar" onClick={ handleAdicionar }>+ 1</button>
+            <button className="btn btn-primary" type="button" name="restar" onClick={ handleResta }>- 1</button>
+            <button className="btn btn-secondary" type="button" name="reset" onClick={ handleReset }>Reset</button>
         </>
     )
 }

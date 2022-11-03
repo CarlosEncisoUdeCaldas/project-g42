@@ -5,7 +5,7 @@ const Saludo = ( { nombre, apellido } ) => {
 
   return (
     <>
-        <p> Saludo Sr(a). { nombre } { apellido }  </p>
+        <h1> Saludo Sr(a). { nombre } { apellido }  </h1>
     </>
   )
 }
