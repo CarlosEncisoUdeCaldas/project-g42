@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import "./Layout.css"
-import NavBar from "./NavBar/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 
 
 //nuestro primer componente creado en React
