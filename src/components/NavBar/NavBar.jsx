@@ -9,6 +9,7 @@ const NavBar = () => {
     {ruta:'/saludo', icono:'bi bi-hand-thumbs-up', texto:'Saludo'},
   ]
   
+  //arreglo que los items del lado derecho de la barra de navegación
   const navItemsRight = [
     {ruta:'/register', icono:'bi bi-box-arrow-in-right', texto:'Register'},
     {ruta:'/login', icono:'bi bi-person', texto:'Login'},
