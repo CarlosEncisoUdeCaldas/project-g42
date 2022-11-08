@@ -1,82 +1,54 @@
 import { useState } from "react";
+import InputRegister from "./InputRegister";
 
 const RegisterForm = () => {
-  //este useState va a controlar el input llamado firstname
-  const [ firstname, setFirstName ] = useState("");
-  const [ lastname, setLastName ] = useState("")
-  const [ email, setEmail ] = useState("");
+  
+  //useState que va a manejar los valores de todos los inputs del formulario
+  const [ inputs, setInputs ] = useState( { 
+    firstname:'',
+    lastname:'',
+    email: '',
+    password:'',
+  } )
 
-  //funcion manejadora del evento onChange en el input firstname
-  const handleFirstName = ( { target } ) => {
-    setFirstName( target.value );
-    console.log(firstname);
-  };
-
-  const handleLastName = ( e ) => {
-    setLastName ( e.target.value );
-    console.log(lastname);
+  //funcion que maneja los cambios de valores de los inputs
+  const handleInputsForm = ( e ) => {
+      setInputs( { ...inputs, [e.target.name]: e.target.value } )
+      console.log( inputs );
   }
-
-  const handleEmail = ( e ) => {
-    setEmail ( e.target.value );
-    console.log( email )
-  }
-
+  
   //funcion handle para las pruebas del boton Enviar
-  const handleEnviar = () => {
-    alert(`Su fullname es: ${firstname} ${lastname}, correo ${email}`);
+  const handleEnviar = ( e ) => {
+    e.preventDefault();  //con esto evitamos que los formularios se reinicien
+    alert(`Su fullname es: ${inputs.firstname} ${inputs.lastname}, correo ${inputs.email}, password: ${inputs.password}`);
     //ToDo: Envio de los datos al API Rest
+
+    //limpiar formulario
+    setInputs({
+      firstname:'',
+      lastname:'',
+      email:'',
+      password:''
+    })
   };
 
   return (
     <>
       <div className="card card-form">
         <h2>RegisterForm</h2>
-        <div className="mb-3">
-          <label htmlFor="exampleFormControlInput1" className="form-label">
-            First Name:
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="firstname"
-            placeholder="Type First Name"
-            name="firstname"
-            value={firstname}
-            onChange={ handleFirstName }
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleFormControlInput1" className="form-label">
-            Last Name:
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="lastname"
-            placeholder="Type Last Name"
-            name="lastname"
-            value={lastname}
-            onChange={ handleLastName }
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleFormControlInput1" className="form-label">
-            Email:
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            placeholder="Type Email"
-            name="email"
-            value={ email }
-            onChange={ handleEmail }
-          />
-        </div>
-        <button className="btn btn-primary" onClick={handleEnviar}>
-          Enviar
-        </button>
+
+        {/* inicio del formulario de registro */}
+        <form action="" onSubmit = { handleEnviar }>
+          <InputRegister title='First Name:' name='firstname' type='text' value={inputs.firstname} handle={handleInputsForm}/>
+          <InputRegister title='Last Name:' type='text' name='lastname' value={inputs.lastname} handle={handleInputsForm}/>
+          <InputRegister title='Email:' type='email' name='email' value={inputs.email} handle={handleInputsForm}/>
+          <InputRegister title='Password:' type='password' name='password' value={inputs.password} handle={handleInputsForm}/>
+          
+          <button type='submit' className="btn btn-primary">
+            Enviar
+          </button>
+        </form>
+        {/* fin del formulario de registro */}
       </div>
     </>
   );
