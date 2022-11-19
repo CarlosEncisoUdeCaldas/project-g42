@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { userSignUp } from "../../api/userApi";
 import InputRegister from "./InputRegister";
+import { Button } from 'primereact/button'
 
 const RegisterForm = () => {
   
@@ -11,25 +13,42 @@ const RegisterForm = () => {
     password:'',
   } )
 
+  // desestructuracion del objeto inputs
+  const { firstname, lastname, email, password } = inputs
+
   //funcion que maneja los cambios de valores de los inputs
   const handleInputsForm = ( e ) => {
       setInputs( { ...inputs, [e.target.name]: e.target.value } )
-      console.log( inputs );
   }
   
   //funcion handle para las pruebas del boton Enviar
-  const handleEnviar = ( e ) => {
+  const handleEnviar = async ( e ) => {
     e.preventDefault();  //con esto evitamos que los formularios se reinicien
-    alert(`Su fullname es: ${inputs.firstname} ${inputs.lastname}, correo ${inputs.email}, password: ${inputs.password}`);
+    
     //ToDo: Envio de los datos al API Rest
+    if( !lastname || !firstname || !email || !password) {
+      alert('All inputs are required')
+    }else{
+      const result = await userSignUp(inputs)
+      // console.log('Mensaje de Result desde RegisterForm');
+      // console.log( result );
+      if(result.status === 200){
+        alert(result.message);
+        // limpiar formulario
+        setInputs({
+          firstname:'',
+          lastname:'',
+          email:'',
+          password:''
+        })
+        window.location.href='/'
+      }else{
+        alert(result.message)
+      }
+    }
 
-    //limpiar formulario
-    setInputs({
-      firstname:'',
-      lastname:'',
-      email:'',
-      password:''
-    })
+    
+    
   };
 
   return (
@@ -44,9 +63,7 @@ const RegisterForm = () => {
           <InputRegister title='Email:' type='email' name='email' value={inputs.email} handle={handleInputsForm}/>
           <InputRegister title='Password:' type='password' name='password' value={inputs.password} handle={handleInputsForm}/>
           
-          <button type='submit' className="btn btn-primary">
-            Enviar
-          </button>
+          <Button label="Submit" icon="pi pi-check" />
         </form>
         {/* fin del formulario de registro */}
       </div>
